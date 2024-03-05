@@ -16,7 +16,7 @@ kubernetesRender = lambda a: app.App {
             template.metadata.labels = a.labels
             template.spec.containers = [
                 {
-                    name = b
+                    name = name
                     image = c.image
                     command = c.command
                     args = c.args
@@ -24,7 +24,7 @@ kubernetesRender = lambda a: app.App {
                     volumeMounts = c.volumes
                     resources: c.resources
                     ports = c.ports
-                } for b, c in a.containers
+                } for name, c in a.containers
             ]
         }
     }
